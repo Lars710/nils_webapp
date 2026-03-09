@@ -18,6 +18,21 @@ header {
     color: #00E47C;
     font-family: "BIText";
 }
+    
+.bildbox {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Setzt Logo und Text auf eine Höhe */
+    width: 100%;
+    margin: 0 auto;
+}
+
+.BIBild {
+    width: 4em;
+    height: 4em;
+    margin-top: 0.7em;
+    margin-left: 0.7em;
+}
 
 .ueberschrift {
     text-align: center;
@@ -28,27 +43,21 @@ header {
 .info {
     display: flex;
     justify-content: center;
-    gap: 10%;
-    border-radius: 0%;
-    box-shadow: 0 0 px;
+    gap: 10%; /* Schöner Abstand nebeneinander auf großen Screens */
+    padding-bottom: 2em;
 }
 
+.info h4 {
+    margin: 0; /* Entfernt störende Standard-Abstände */
+}
 
 .BCBild {
     width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 8em;
-}
-
-.BIBild {
-    width: 4em;
-    height: 4em;
-    display: flex;
-    justify-content: center;
-    margin-top: 0.7em;
-    margin-left: 0.7em;
+    height: auto;
+    max-height: 90vh; /* Gilt jetzt nur noch für große Bildschirme */
+    object-fit: cover;
+    display: block;
+    margin: 0 auto 8em auto;
 }
 
 body {
@@ -282,20 +291,62 @@ a:hover{
 /* Responsive Design */
 @media (max-width: 850px) {
     .split {
-        flex-direction: column; /* Stapelt die Elemente untereinander */
-        align-items: center;    /* Zentriert die Boxen */
-        padding: 1em;           /* Weniger Abstand am Rand auf Handys */
+        flex-direction: column; 
+        align-items: center;    
+        padding: 1em;           
     }
 
     .wochenliste, 
     .tagesprojekte {
-        width: 100%;            /* Nutzt die volle Breite */
-        min-width: unset;       /* Entfernt die starre Mindestbreite */
-        margin-bottom: 2em;     /* Abstand zwischen den gestapelten Boxen */
+        width: 100%;            
+        min-width: unset;       
+        margin-bottom: 2em;     
     }
 
     .mySlides img {
-        height: auto;           /* Verhindert verzerrte Bilder auf kleinen Screens */
+        height: auto;           
         max-height: 25em;
+    }
+
+    .BCBild {
+        max-height: unset; 
+        height: auto;
+        aspect-ratio: 16 / 9; 
+        object-fit: cover; 
+        margin-bottom: 4em; 
+    }
+
+    /* NEU: Header-Anpassungen NUR für kleine Bildschirme */
+    .bildbox {
+        flex-direction: column-reverse; 
+    }
+
+    .BIBild {
+        margin-left: 0;
+        margin-top: 1.5em;
+        width: 5em;
+        height: 5em;
+    }
+
+    .ueberschrift {
+        font-size: 1.6em;
+        margin-top: 0.5em;
+        padding: 0 1em;
+    }
+
+    .info {
+        display: flex;
+        flex-direction: column; 
+        align-items: center;    /* Zentriert die Boxen der Links */
+        width: 100%;            /* WICHTIG: Nutzt die komplette Bildschirmbreite */
+        gap: 1.2em;             /* Abstand zwischen den Links */
+        padding-bottom: 2em;
+    }
+
+    .info h4 {
+        margin: 0;              
+        padding: 0;
+        text-align: center;     /* Zentriert den Text selbst */
+        width: 100%;            /* Gibt dem Text den nötigen Platz zum Zentrieren */
     }
 }
